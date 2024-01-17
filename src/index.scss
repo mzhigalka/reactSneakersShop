@@ -3,6 +3,12 @@ body{
   background-color: #E7F6FF;
 }
 
+button{
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
 .wrapper{
   background: #FFFFFF;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
@@ -22,11 +28,16 @@ header{
     margin: 0;
   }
 
+  .header__text{
+    color: #9D9D9D;
+  }
+
   .header__list-item{
     margin-right: 32px;
 
     img{
       margin-right: 8px;
+      
     }
   }
 }
@@ -35,5 +46,32 @@ header{
   
   h1{
     margin: 0;
+  }
+}
+
+.main-cards{
+  gap: 60px 40px;
+
+  .cards{
+    border: 1px solid #F8F8F8;
+    border-radius: 40px;
+    padding: 30px;
+    width: 215px;
+    transition: box-shadow .5s ease;
+  
+    &:hover{
+      box-shadow: 0px 14px 30px 0px rgba(0, 0, 0, 0.05);
+      transition: box-shadow .5s ease;
+    }
+  
+    .cards__text{
+      margin: 14px 0;
+      font-size: 14px;
+    }
+  
+    .card__title-price{
+      color: #BDBDBD;
+      font-size: 11px;
+    }
   }
 }
