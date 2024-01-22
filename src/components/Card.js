@@ -1,5 +1,4 @@
-
-export default function Card() {
+export default function Card(props) {
   return (
     <div className="cards">
       <div className="cards__favorite">
@@ -7,16 +6,16 @@ export default function Card() {
       </div>
       <img
         className="cards__images"
-        src="img/sneakers/1.jpg"
+        src={props.imageUrl}
         alt="Sneakers"
         width={133}
         height={112}
       />
-      <p className="cards__text">Мужские Кроссовки Nike Blazer Mid Suede</p>
+      <p className="cards__text">{props.title}</p>
       <div className="card__bottom d-flex justify-between ">
         <div className="d-flex flex-column">
           <span className="card__title-price text-uppercase">Цена:</span>
-          <b>12 999 руб.</b>
+          <b>{props.price} руб.</b>
         </div>
         <button>
           <img
