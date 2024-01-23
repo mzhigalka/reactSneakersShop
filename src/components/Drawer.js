@@ -1,6 +1,6 @@
-export default function Drawer() {
+export default function Drawer(props) {
   return (
-    <div style={{ display: "none" }} className="overlay">
+    <div className="overlay">
       <div className="drawer d-flex flex-column">
         <h2 className="d-flex justify-between mb-30">
           Корзина
@@ -8,6 +8,7 @@ export default function Drawer() {
             className="button__remove cu-p"
             src="/img/sneakers/btn-remove.svg"
             alt="Remove"
+            onClick={props.onClose}
           />
         </h2>
 

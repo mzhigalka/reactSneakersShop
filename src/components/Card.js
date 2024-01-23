@@ -1,8 +1,20 @@
+import React from 'react';
+
 export default function Card(props) {
+  const [isAdded, setIsAdded] = React.useState(false);
+  
+  const onClickPlus = () => {
+    setIsAdded(!isAdded);
+  };
+
   return (
     <div className="cards">
       <div className="cards__favorite">
-        <img src="/img/sneakers/like0.svg" alt="Button liked" />
+        <img 
+          src="/img/sneakers/like0.svg" 
+          alt="Button liked"
+          onClick={props.onClickFavorite}
+        />
       </div>
       <img
         className="cards__images"
@@ -19,11 +31,14 @@ export default function Card(props) {
         </div>
         <button>
           <img
-            src="/img/plus.svg"
-            alt=""
+            src={
+              isAdded ? "/img/done.svg" : "/img/plus.svg"
+            }
+            alt="Plus"
             className="button__plus"
             width={32}
             height={32}
+            onClick={onClickPlus}
           />
         </button>
       </div>
