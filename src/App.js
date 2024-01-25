@@ -5,7 +5,8 @@ import Drawer from "./components/Drawer";
 
 function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
-  const [items, setItems] = React.useState([]);
+  const [items, setItems] = React.useState([{}]);
+  const [cartItems, setCartItems] = React.useState([]);
 
   // Received data from backend
   React.useEffect(() => {
@@ -18,11 +19,15 @@ function App() {
         console.warn(err);
         alert('Error while receiving data')
       });
-  }, [])
+  }, []);
+
+  const onAddToCart = (obj) => {
+    setCartItems(prev => [...prev, obj]);
+  };
 
   return (
     <div className="wrapper clear">
-      {cartOpened && <Drawer onClose={() => setCartOpened(false)} />}
+      {cartOpened && <Drawer onClose={() => setCartOpened(false)} items={cartItems}/>}
       <Header 
         onClickCart={() => setCartOpened(true)} 
       />
@@ -37,13 +42,13 @@ function App() {
             </div>
           </div>
           <div className="main-cards d-flex justify-between flex-wrap">
-            {items.map((obj) => (
+            {items.map((item) => (
               <Card 
-                title={obj.title} 
-                price={obj.price} 
-                imageUrl={obj.imageUrl} 
+                title={item.title} 
+                price={item.price} 
+                imageUrl={item.imageUrl} 
                 onClickFavorite={() => console.log('Favorite')}
-                onClickPlus={() => console.log('Plus')}
+                onPlus={(obj) => onAddToCart(obj)}
               /> 
             ))}
           </div>

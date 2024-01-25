@@ -1,4 +1,4 @@
-export default function Drawer(props) {
+export default function Drawer({ onClose, items = [] }) {
   return (
     <div className="overlay">
       <div className="drawer d-flex flex-column">
@@ -8,22 +8,23 @@ export default function Drawer(props) {
             className="button__remove cu-p"
             src="/img/sneakers/btn-remove.svg"
             alt="Remove"
-            onClick={props.onClose}
+            onClick={onClose}
           />
         </h2>
 
         <div className="items">
+          {items.map((obj) => (
           <div className="cart__item d-flex align-center mb-20">
             <img
               className="cart__item-images mr-20"
               width={70}
               height={70}
-              src="/img/sneakers/2.jpg"
+              src={obj.imageUrl}
               alt="Sneakers"
             />
             <div className="mr-20">
-              <p>Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
+              <p>{obj.title}</p>
+              <b>{obj.price} руб.</b>
             </div>
             <img
               className="button__remove"
@@ -31,24 +32,7 @@ export default function Drawer(props) {
               alt="Remove"
             />
           </div>
-          <div className="cart__item d-flex align-center mb-20">
-            <img
-              className="cart__item-images mr-20"
-              width={70}
-              height={70}
-              src="/img/sneakers/3.jpg"
-              alt="Sneakers"
-            />
-            <div className="mr-20">
-              <p>Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img
-              className="button__remove"
-              src="/img/sneakers/btn-remove.svg"
-              alt="Remove"
-            />
-          </div>
+          ))}  
         </div>
 
         <div className="cart__total-block">
