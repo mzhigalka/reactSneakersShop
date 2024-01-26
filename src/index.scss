@@ -228,3 +228,30 @@ header{
     background: darken($color: #9DD458, $amount: 10%);
   }
 }
+
+.cart__empty{
+  text-align: center;
+
+  p{
+    width: 280px;
+    line-height: 24px;
+    color: #9D9D9D;
+  }
+
+  .button__green{
+    width: 245px;
+    margin-top: 20px;
+
+    &:hover{
+      img{
+        transform: rotate(180deg) translateX(5px); 
+      }
+    }
+
+    img{
+      transform: rotate(180deg);
+      margin-right: 25px;
+      transition: transform 0.2s ease;
+    }
+  }
+}
