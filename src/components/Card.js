@@ -1,6 +1,7 @@
+import { isLabelWithInternallyDisabledControl } from '@testing-library/user-event/dist/utils';
 import React from 'react';
 
-export default function Card({ title, price, imageUrl, onFavorite, onPlus }) {
+export default function Card({ title, price, imageUrl, onFavorite, onPlus, id }) {
   const [isAdded, setIsAdded] = React.useState(false);
   
   const onClickPlus = () => {
