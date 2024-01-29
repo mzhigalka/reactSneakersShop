@@ -2,19 +2,25 @@ import React from 'react';
 
 export default function Card({ title, price, imageUrl, onFavorite, onPlus, id }) {
   const [isAdded, setIsAdded] = React.useState(false);
+  const [isFavorite, setIsFavorite] = React.useState(false);
   
   const onClickPlus = () => {
     onPlus({title, price, imageUrl});
     setIsAdded(!isAdded);
   };
 
+  const onClickFavorite = () => {
+    onFavorite({title, price, imageUrl});
+    setIsFavorite(!isFavorite);
+  };
+
   return (
     <div className="cards">
       <div className="cards__favorite">
         <img 
-          src="/img/sneakers/like0.svg" 
+          src={isFavorite ? "/img/sneakers/like1.svg" : "/img/sneakers/like0.svg" }
           alt="Button liked"
-          onClick={onFavorite}
+          onClick={onClickFavorite}
         />
       </div>
       <img
