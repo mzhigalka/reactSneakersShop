@@ -3,7 +3,6 @@ import axios from "axios";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
-import { logDOM } from "@testing-library/react";
 
 function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
@@ -30,8 +29,8 @@ function App() {
   };
 
   const onRemoveToCart = (id) => {
-    // axios.delete(`https://65b0c894d16d31d11bdd3bd9.mockapi.io/cart${id}`);
-    setCartItems((prev) => prev.filter(item => item.id !== id));
+    axios.delete(`https://65b0c894d16d31d11bdd3bd9.mockapi.io/cart/${id}`);
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
   }
 
   const onChangeSearchInput = (e) => {
