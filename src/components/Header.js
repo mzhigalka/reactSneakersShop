@@ -14,8 +14,8 @@ export default function Header(props) {
           <li className="header__list-item cu-p" onClick={props.onClickCart}>
             <img
               className="header__list-item--img"
-              width={18}
-              height={18}
+              width={20}
+              height={20}
               src="img/basket.svg"
               alt="basket"
             />
@@ -24,8 +24,8 @@ export default function Header(props) {
           <li className="header__list-item">
             <img
               className="header__list-item--img"
-              width={18}
-              height={18}
+              width={20}
+              height={20}
               src="img/liked.svg"
               alt="liked"
             />
@@ -34,8 +34,8 @@ export default function Header(props) {
           <li className="header__list-item">
             <img
               className="header__list-item--img"
-              width={18}
-              height={18}
+              width={20}
+              height={20}
               src="img/user.svg"
               alt="user"
             />

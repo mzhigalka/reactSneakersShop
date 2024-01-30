@@ -39,11 +39,16 @@ header{
   }
 
   .header__list-item{
+    display: flex;
+    align-items: center;
     margin-right: 32px;
+    color: #5C5C5C;
 
+    
+    
     img{
       margin-right: 8px;
-      }
+    }
   }
 }
 
