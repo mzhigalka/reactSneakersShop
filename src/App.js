@@ -2,8 +2,9 @@ import React from "react";
 import axios from "axios";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
-import Home from "./pages/Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Favorites from "./pages/Favorites";
 
 function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
@@ -23,6 +24,9 @@ function App() {
 
     axios.get('https://65b0c894d16d31d11bdd3bd9.mockapi.io/cart')
       .then((res) => setCartItems(res.data));
+
+    axios.get('https://65b0c894d16d31d11bdd3bd9.mockapi.io/favorites')
+      .then((res) => setFavorites(res.data));
   }, []);
 
   const onAddToCart = (obj) => {
@@ -35,9 +39,16 @@ function App() {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const onAddToFavorite = (obj) => {
-    axios.post('https://65b0c894d16d31d11bdd3bd9.mockapi.io/favorites', obj);
-    setFavorites((prev) => [...prev, obj]);
+  const onAddToFavorite = async (obj) => {
+
+    if (favorites.find((favObj) => favObj.id === obj.id)) {
+      axios.delete(`https://65b0c894d16d31d11bdd3bd9.mockapi.io/favorites/${obj.id}`);
+      setFavorites((prev) => prev.filter((item) => item.id !== obj.id));
+    } else {
+        //Wrong Link
+        const { data } = await axios.post('https://65b0c894d16d31d11bdd3bd9.mockapi.io/favorites', obj);
+        setFavorites((prev) => [...prev, data]);
+    };
   }; 
 
   const onChangeSearchInput = (e) => {
@@ -61,6 +72,15 @@ function App() {
             onAddToFavorite={onAddToFavorite}
             onAddToCart={onAddToCart}
           />
+          }>
+          </Route>
+        </Routes>
+        <Routes>
+          <Route path="/favorites" exact={true} element={
+            <Favorites
+              items={favorites}
+              onAddToFavorite={onAddToFavorite}
+            />
           }>
           </Route>
         </Routes>

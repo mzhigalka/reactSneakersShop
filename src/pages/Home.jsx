@@ -43,12 +43,9 @@ export default function Home ({
           .map((item, index) => (
             <Card
               key={index}
-              title={item.title}
-              price={item.price}
-              imageUrl={item.imageUrl}
-              onClickFavorite={() => console.log("Favorite")}
               onFavorite={(obj) => onAddToFavorite(obj)}
               onPlus={(obj) => onAddToCart(obj)}
+              {...item}
             />
           ))}
       </div>

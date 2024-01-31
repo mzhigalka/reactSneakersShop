@@ -1,16 +1,24 @@
 import React from 'react';
 
-export default function Card({ title, price, imageUrl, onFavorite, onPlus, id }) {
+export default function Card({ 
+  id, 
+  title, 
+  price, 
+  imageUrl, 
+  onFavorite, 
+  onPlus, 
+  favorited = false 
+}) {
   const [isAdded, setIsAdded] = React.useState(false);
-  const [isFavorite, setIsFavorite] = React.useState(false);
+  const [isFavorite, setIsFavorite] = React.useState(favorited);
   
   const onClickPlus = () => {
-    onPlus({title, price, imageUrl});
+    onPlus({ title, price, imageUrl });
     setIsAdded(!isAdded);
   };
 
   const onClickFavorite = () => {
-    onFavorite({title, price, imageUrl});
+    onFavorite({ id, title, price, imageUrl });
     setIsFavorite(!isFavorite);
   };
 
