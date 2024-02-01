@@ -1,6 +1,26 @@
+import React from 'react';
+
 export default function Drawer({ onClose, items = [], onRemove }) {
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
+
+  React.useEffect(() => {
+    const handleBodyScroll = () => {
+      if (isDrawerOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'visible';
+      }
+    };
+
+    handleBodyScroll();
+
+    return () => {
+      document.body.style.overflow = 'visible';
+    };
+  }, [isDrawerOpen]);
+
   return (
-    <div className="overlay">
+    <div className={`overlay ${isDrawerOpen ? 'overlay-open' : ''}`}>
       <div className="drawer d-flex flex-column">
         <h2 className="d-flex justify-between mb-30">
           Корзина
