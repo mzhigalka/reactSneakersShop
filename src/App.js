@@ -40,15 +40,18 @@ function App() {
   };
 
   const onAddToFavorite = async (obj) => {
-
-    if (favorites.find((favObj) => favObj.id === obj.id)) {
-      axios.delete(`https://65b0c894d16d31d11bdd3bd9.mockapi.io/favorites/${obj.id}`);
-      setFavorites((prev) => prev.filter((item) => item.id !== obj.id));
-    } else {
-        //Wrong Link
-        const { data } = await axios.post('https://65b0c894d16d31d11bdd3bd9.mockapi.io/favorites', obj);
-        setFavorites((prev) => [...prev, data]);
-    };
+    try {
+      if (favorites.find((favObj) => favObj.id === obj.id)) {
+        axios.delete(`https://65b0c894d16d31d11bdd3bd9.mockapi.io/favorites/${obj.id}`);
+        setFavorites((prev) => prev.filter((item) => item.id !== obj.id));
+      } else {
+          //Wrong Link
+          const { data } = await axios.post('https://65b0c894d16d31d11bdd3bd9.mockapi.io/favorites', obj);
+          setFavorites((prev) => [...prev, data]);
+      };
+    } catch (error) {
+      alert('Не удалось добавить в закладки')
+    }
   }; 
 
   const onChangeSearchInput = (e) => {
