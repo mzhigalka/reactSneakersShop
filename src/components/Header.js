@@ -37,7 +37,7 @@ export default function Header(props) {
             </Link>
           </li>
           <li className="header__list-item cu-p">
-            <Link to="/user" className='d-flex'>
+            <Link to="/orders" className='d-flex'>
               <img
                 className="header__list-item--img"
                 width={20}

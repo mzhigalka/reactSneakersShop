@@ -36,7 +36,10 @@ export default function Drawer({ onClose, items = [], onRemove }) {
           <div>
             <div className="items">
               {items.map((obj) => (
-                <div className="cart__item d-flex align-center mb-20">
+                <div 
+                  key={obj.id} 
+                  className="cart__item d-flex align-center mb-20"
+                >
                   <img
                     className="cart__item-images mr-20"
                     width={70}

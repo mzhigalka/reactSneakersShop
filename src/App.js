@@ -12,26 +12,32 @@ function App() {
   const [favorites, setFavorites] = React.useState([]);
   const [cartItems, setCartItems] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(true);
 
-  // Received data from backend
   React.useEffect(() => {
-    axios.get('https://65b0c894d16d31d11bdd3bd9.mockapi.io/items')
-      .then((res) => setItems(res.data))
-      .catch((err) => {
-        console.warn(err);
-        alert('Error while receiving data');
-      });
+    async function fetchData() {
+      const cartResponse = await axios.get('https://65b0c894d16d31d11bdd3bd9.mockapi.io/cart');
+      // const favoritesResponse = await axios.get('https://65b0c894d16d31d11bdd3bd9.mockapi.io/favorites');
+      const itemsResponse = await axios.get('https://65b0c894d16d31d11bdd3bd9.mockapi.io/items');
 
-    axios.get('https://65b0c894d16d31d11bdd3bd9.mockapi.io/cart')
-      .then((res) => setCartItems(res.data));
+      setIsLoading(false);
+      
+      setCartItems(cartResponse.data);
+      // setFavorites(favoritesResponse.data);
+      setItems(itemsResponse.data);
+    };
 
-    axios.get('https://65b0c894d16d31d11bdd3bd9.mockapi.io/favorites')
-      .then((res) => setFavorites(res.data));
+    fetchData();
   }, []);
 
   const onAddToCart = (obj) => {
-    axios.post('https://65b0c894d16d31d11bdd3bd9.mockapi.io/cart', obj);
-    setCartItems((prev) => [...prev, obj]);
+    if (cartItems.find((item) => Number(item.id) === Number(obj.id))) {
+      axios.delete(`https://65b0c894d16d31d11bdd3bd9.mockapi.io/cart/${obj.id}`);
+      setCartItems((prev) => prev.filter((item) => Number(item.id) !== Number(obj.id)));
+    } else {
+        axios.post('https://65b0c894d16d31d11bdd3bd9.mockapi.io/cart', obj);
+        setCartItems((prev) => [...prev, obj]);
+    };
   };
 
   const onRemoveToCart = (id) => {
@@ -68,12 +74,14 @@ function App() {
         <Routes>
           <Route path="/" exact={true} element={
             <Home 
-            items={items} 
-            searchValue={searchValue} 
-            setSearchValue={setSearchValue} 
-            onChangeSearchInput={onChangeSearchInput} 
-            onAddToFavorite={onAddToFavorite}
-            onAddToCart={onAddToCart}
+              items={items} 
+              cartItems={cartItems}
+              searchValue={searchValue} 
+              setSearchValue={setSearchValue} 
+              onChangeSearchInput={onChangeSearchInput} 
+              onAddToFavorite={onAddToFavorite}
+              onAddToCart={onAddToCart}
+              isLoading={isLoading}
           />
           }>
           </Route>

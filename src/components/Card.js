@@ -1,19 +1,22 @@
-import React from 'react';
+import React from "react";
+import ContentLoader from "react-content-loader";
 
-export default function Card({ 
-  id, 
-  title, 
-  price, 
-  imageUrl, 
-  onFavorite, 
-  onPlus, 
-  favorited = false 
+export default function Card({
+  id,
+  title,
+  price,
+  imageUrl,
+  onFavorite,
+  onPlus,
+  favorited = false,
+  added = false,
+  loading = false,
 }) {
-  const [isAdded, setIsAdded] = React.useState(false);
+  const [isAdded, setIsAdded] = React.useState(added);
   const [isFavorite, setIsFavorite] = React.useState(favorited);
-  
+
   const onClickPlus = () => {
-    onPlus({ title, price, imageUrl });
+    onPlus({ id, title, price, imageUrl });
     setIsAdded(!isAdded);
   };
 
@@ -24,39 +27,60 @@ export default function Card({
 
   return (
     <div className="cards">
-      <div className="cards__favorite">
-        <img 
-          src={isFavorite ? "/img/sneakers/like1.svg" : "/img/sneakers/like0.svg" }
-          alt="Button liked"
-          onClick={onClickFavorite}
-        />
-      </div>
-      <img
-        className="cards__images"
-        src={imageUrl}
-        alt="Sneakers"
-        width={133}
-        height={112}
-      />
-      <p className="cards__text">{title}</p>
-      <div className="card__bottom d-flex justify-between ">
-        <div className="d-flex flex-column">
-          <span className="card__title-price text-uppercase">Цена:</span>
-          <b>{price} руб.</b>
-        </div>
-        <button>
+      {loading ? (
+        <ContentLoader
+          speed={2}
+          width={159}
+          height={250}
+          viewBox="0 0 159 260"
+          backgroundColor="#f3f3f3"
+          foregroundColor="#ecebeb"
+        >
+          <rect x="0" y="-1" rx="10" ry="10" width="150" height="112" />
+          <rect x="0" y="127" rx="3" ry="3" width="150" height="15" />
+          <rect x="0" y="150" rx="3" ry="3" width="93" height="15" />
+          <rect x="0" y="183" rx="8" ry="8" width="80" height="25" />
+          <rect x="116" y="177" rx="8" ry="8" width="32" height="32" />
+        </ContentLoader>
+      ) : (
+        <>
+          <div className="cards__favorite">
+            <img
+              src={
+                isFavorite
+                  ? "/img/sneakers/like1.svg"
+                  : "/img/sneakers/like0.svg"
+              }
+              alt="Button liked"
+              onClick={onClickFavorite}
+            />
+          </div>
           <img
-            src={
-              isAdded ? "/img/done.svg" : "/img/plus.svg"
-            }
-            alt="Plus"
-            className="button__plus"
-            width={32}
-            height={32}
-            onClick={onClickPlus}
+            className="cards__images"
+            src={imageUrl}
+            alt="Sneakers"
+            width={133}
+            height={112}
           />
-        </button>
-      </div>
+          <p className="cards__text">{title}</p>
+          <div className="card__bottom d-flex justify-between ">
+            <div className="d-flex flex-column">
+              <span className="card__title-price text-uppercase">Цена:</span>
+              <b>{price} руб.</b>
+            </div>
+            <button>
+              <img
+                src={isAdded ? "/img/done.svg" : "/img/plus.svg"}
+                alt="Plus"
+                className="button__plus"
+                width={32}
+                height={32}
+                onClick={onClickPlus}
+              />
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }

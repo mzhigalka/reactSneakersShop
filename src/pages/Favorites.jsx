@@ -23,6 +23,7 @@ export default function Favorites({ items, onAddToFavorite }) {
               key={index}
               favorited={true}
               onFavorite={onAddToFavorite}
+              added
               {...item}
             />
           ))}
