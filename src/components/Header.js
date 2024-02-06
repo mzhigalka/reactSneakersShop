@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function Header(props) {
   return (
     <header className="header d-flex justify-between align-center p-40">
-      <Link to='/'>
+      <Link to="/">
         <div className="header__logo d-flex align-center	">
           <img width={40} height={40} src="/img/logo.png" alt="logo" />
           <div className="header__info">
@@ -25,7 +25,7 @@ export default function Header(props) {
             <span>1205 руб.</span>
           </li>
           <li className="header__list-item cu-p">
-            <Link to="/favorites" className='d-flex'>
+            <Link to="/favorites" className="d-flex">
               <img
                 className="header__list-item--img"
                 width={20}
@@ -37,7 +37,7 @@ export default function Header(props) {
             </Link>
           </li>
           <li className="header__list-item cu-p">
-            <Link to="/orders" className='d-flex'>
+            <Link to="/orders" className="d-flex">
               <img
                 className="header__list-item--img"
                 width={20}

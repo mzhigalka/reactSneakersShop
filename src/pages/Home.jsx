@@ -12,8 +12,7 @@ export default function Home({
   onAddToCart,
   isLoading,
 }) {
-  const {isItemAdded} = React.useContext(AppContex);
-
+  
   const renderItems = () => {
     const filtredItems = items.filter((item) =>
       item.title && item.title.toLowerCase().includes(searchValue.toLowerCase())

@@ -12,7 +12,7 @@ export default function Card({
   favorited = false,
   loading = false,
 }) {
-  const {isItemAdded} = React.useContext(AppContext);
+  const { isItemAdded } = React.useContext(AppContext);
   const [isFavorite, setIsFavorite] = React.useState(favorited);
 
   const onClickPlus = () => {

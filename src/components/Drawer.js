@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default function Drawer({ onClose, items = [], onRemove }) {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
@@ -6,21 +6,21 @@ export default function Drawer({ onClose, items = [], onRemove }) {
   React.useEffect(() => {
     const handleBodyScroll = () => {
       if (isDrawerOpen) {
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = "hidden";
       } else {
-        document.body.style.overflow = 'visible';
+        document.body.style.overflow = "visible";
       }
     };
 
     handleBodyScroll();
 
     return () => {
-      document.body.style.overflow = 'visible';
+      document.body.style.overflow = "visible";
     };
   }, [isDrawerOpen]);
 
   return (
-    <div className={`overlay ${isDrawerOpen ? 'overlay-open' : ''}`}>
+    <div className={`overlay ${isDrawerOpen ? "overlay-open" : ""}`}>
       <div className="drawer d-flex flex-column">
         <h2 className="d-flex justify-between mb-30">
           Корзина
@@ -36,8 +36,8 @@ export default function Drawer({ onClose, items = [], onRemove }) {
           <div>
             <div className="items">
               {items.map((obj) => (
-                <div 
-                  key={obj.id} 
+                <div
+                  key={obj.id}
                   className="cart__item d-flex align-center mb-20"
                 >
                   <img
