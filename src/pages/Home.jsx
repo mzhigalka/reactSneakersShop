@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 import Card from "../components/Card";
-import AppContex from '../context';
+import AppContex from "../context";
 
 export default function Home({
   items,
@@ -12,10 +12,11 @@ export default function Home({
   onAddToCart,
   isLoading,
 }) {
-  
   const renderItems = () => {
-    const filtredItems = items.filter((item) =>
-      item.title && item.title.toLowerCase().includes(searchValue.toLowerCase())
+    const filtredItems = items.filter(
+      (item) =>
+        item.title &&
+        item.title.toLowerCase().includes(searchValue.toLowerCase())
     );
 
     return (isLoading ? [...Array(8)] : filtredItems).map((item, index) => (
@@ -23,7 +24,6 @@ export default function Home({
         key={index}
         onFavorite={(obj) => onAddToFavorite(obj)}
         onPlus={(obj) => onAddToCart(obj)}
-        
         loading={isLoading}
         {...item}
       />

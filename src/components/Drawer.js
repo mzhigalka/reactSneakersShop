@@ -1,7 +1,40 @@
 import React from "react";
+import AppContext from "../context";
+import Info from "./Info";
+import axios from "axios";
+
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default function Drawer({ onClose, items = [], onRemove }) {
+  const { cartItems, setCartItems } = React.useContext(AppContext);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
+  const [isOrderComplete, setIsOrderComplete] = React.useState(false);
+  const [orderId, setOrderId] = React.useState(null);
+
+  const onClickOrder = async () => {
+    //fake axios request
+    try {
+      const { data } = await axios.post(
+        "https://65b0c894d16d31d11bdd3bd9.mockapi.io/orders",
+        {
+          items: cartItems,
+        }
+      );
+      setOrderId(data.id);
+      setIsOrderComplete(true);
+      setCartItems([]);
+
+      for (let i = 0; i < cartItems.length; i++) {
+        const item = cartItems[i];
+        await axios.delete(
+          "https://65b0c894d16d31d11bdd3bd9.mockapi.io/cart" + item.id
+        );
+        await delay(1000);
+      }
+    } catch (error) {
+      alert("Ошибка при создании заказа :(");
+    }
+  };
 
   React.useEffect(() => {
     const handleBodyScroll = () => {
@@ -33,7 +66,7 @@ export default function Drawer({ onClose, items = [], onRemove }) {
         </h2>
 
         {items.length > 0 ? (
-          <div>
+          <div className="d-flex flex-column flex">
             <div className="items">
               {items.map((obj) => (
                 <div
@@ -72,7 +105,7 @@ export default function Drawer({ onClose, items = [], onRemove }) {
                   <div></div>
                   <b>1074 руб.</b>
                 </li>
-                <button className="button__green">
+                <button onClick={onClickOrder} className="button__green">
                   Оформить заказ
                   <img src="/img/sneakers/arrow.svg" alt="Arrow" />
                 </button>
@@ -80,20 +113,19 @@ export default function Drawer({ onClose, items = [], onRemove }) {
             </div>
           </div>
         ) : (
-          <div className="cart__empty d-flex align-center justify-center flex-column flex">
-            <img
-              src="/img/empty-cart.jpg"
-              alt="Empty"
-              width={120}
-              height={120}
-            />
-            <h2>Корзина пустая</h2>
-            <p>Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.</p>
-            <button className="button__green" onClick={onClose}>
-              <img src="/img/sneakers/arrow.svg" alt="Arrow" />
-              Вернуться назад
-            </button>
-          </div>
+          <Info
+            image={
+              isOrderComplete
+                ? "/img/complete-order.jpg"
+                : "/img/empty-cart.jpg"
+            }
+            title={isOrderComplete ? "Заказ оформлен!" : "Корзина пустая"}
+            description={
+              isOrderComplete
+                ? `Ваш заказ #${orderId} скоро будет передан курьерской доставке`
+                : "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."
+            }
+          />
         )}
       </div>
     </div>

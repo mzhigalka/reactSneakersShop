@@ -232,11 +232,15 @@ header{
 
   &:active{
     background: darken($color: #9DD458, $amount: 10%);
-  }
+  }  
 }
 
 .cart__empty{
   text-align: center;
+
+  h2{
+    margin-top: 20px;
+  }
 
   p{
     width: 280px;
