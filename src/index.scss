@@ -1,122 +1,121 @@
-body{
-  font-family: 'Inter', system-ui;
+body {
+  font-family: "Inter", system-ui;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smooting: grayscale;
-  background-color: #E7F6FF;
+  background-color: #e7f6ff;
 }
 
-button{
+button {
   cursor: pointer;
   border: none;
   background-color: transparent;
 }
 
 * {
-  font-family: 'Inter', system-ui;
+  font-family: "Inter", system-ui;
 }
 
-.wrapper{
-  background: #FFFFFF;
+.wrapper {
+  background: #ffffff;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
   max-width: 1080px;
   margin: 50px auto;
 }
 
-header{
-  border-bottom: 1px solid #EAEAEA;
+header {
+  border-bottom: 1px solid #eaeaea;
 
-  img{
+  img {
     margin-right: 15px;
   }
 
-  h3, p{
+  h3,
+  p {
     margin: 0;
   }
 
-  .header__text{
-    color: #9D9D9D;
+  .header__text {
+    color: #9d9d9d;
   }
 
-  .header__list-item{
+  .header__list-item {
     display: flex;
     align-items: center;
     margin-right: 32px;
-    color: #5C5C5C;
+    color: #5c5c5c;
 
-    
-    
-    img{
+    img {
       margin-right: 8px;
     }
   }
 }
 
-.content{
+.content {
   min-height: 100vh;
 
-  h1{
+  h1 {
     margin: 0;
   }
 }
 
-.main-cards{
+.main-cards {
   gap: 60px 40px;
 
-  .cards{
-    border: 1px solid #F8F8F8;
+  .cards {
+    border: 1px solid #f8f8f8;
     border-radius: 40px;
     padding: 30px;
     width: 215px;
-    transition: box-shadow .3s ease, transform .3s ease;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 
-    .cards__favorite{
+    .cards__favorite {
       cursor: pointer;
       position: absolute;
     }
-  
-    &:hover{
+
+    &:hover {
       box-shadow: 0px 14px 30px 0px rgba(0, 0, 0, 0.06);
-      transition: box-shadow .3s ease, transform .3s ease;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
       transform: translateY(-5px);
     }
-  
-    .cards__text{
+
+    .cards__text {
       margin: 14px 0;
       font-size: 14px;
     }
-  
-    .card__title-price{
-      color: #BDBDBD;
+
+    .card__title-price {
+      color: #bdbdbd;
       font-size: 11px;
     }
   }
 }
 
-.search__block{
+.search__block {
   border: 1px solid #f3f3f3;
   border-radius: 10px;
   padding: 0 15px;
   position: relative;
 
-  .clear{
+  .clear {
     position: absolute;
     width: 20px;
     height: 20px;
     right: 0;
     top: 12px;
-    right: 10px
+    right: 10px;
   }
 
   input {
-    border:none;
+    border: none;
     padding: 13px;
     font-size: 16px;
     width: 200px;
   }
 }
 
-.overlay{
+.overlay {
   position: absolute;
   left: 0;
   top: 0;
@@ -126,68 +125,67 @@ header{
   z-index: 1;
 }
 
-.drawer{
+.drawer {
   position: absolute;
   width: 420px; //385px default
   height: 100%;
   right: 0;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
   padding: 30px;
 
-  .items{
+  .items {
     flex: 1;
     overflow: auto;
   }
-  
-  h2{
+
+  h2 {
     margin: 0;
   }
 
-  .cart__item{
+  .cart__item {
     border: 1px solid #f3f3f3;
     border-radius: 20px;
     padding: 30px 20px;
     overflow: hidden;
-    
-    .cart__item-images{
+
+    .cart__item-images {
       background-repeat: no-repeat;
       background-size: cover;
       object-fit: contain;
     }
-    
-    p{
+
+    p {
       font-size: 16px;
-      margin: 0 0 5px 0;      
+      margin: 0 0 5px 0;
     }
 
-    b{
+    b {
       font-size: 14px;
     }
 
-    .button__remove{
+    .button__remove {
       cursor: pointer;
       opacity: 0.5;
-      transition: opacity .3s ease-in-out;
+      transition: opacity 0.3s ease-in-out;
 
-      &:hover{
+      &:hover {
         opacity: 1;
       }
     }
   }
 
-  .cart__item:last-child{
+  .cart__item:last-child {
     align-items: flex-end;
   }
 }
 
-.cart__total-block{
-
-  li{
+.cart__total-block {
+  li {
     display: flex;
     align-items: flex-end;
 
-    div{
+    div {
       position: relative;
       top: -3px;
       margin: 0 8px;
@@ -196,69 +194,69 @@ header{
       border-bottom: 1px dashed #dfdfdf;
     }
   }
-  
-  .button__green{
+
+  .button__green {
     position: relative;
 
-    &:hover{
-      img{
+    &:hover {
+      img {
         transform: translateX(5px);
       }
     }
 
-    img{
+    img {
       position: absolute;
       right: 45px;
       top: 20px;
-      transition: transform .2s ease-in-out;
+      transition: transform 0.2s ease-in-out;
     }
   }
 }
 
-.button__green{
+.button__green {
   width: 100%;
   border-radius: 18px;
-  background: #9DD458;
-  color: #FFF;
+  background: #9dd458;
+  color: #fff;
   padding: 18px;
   font-size: 16px;
   font-weight: 600;
   transition: background 0.2s ease;
 
-  &:hover{
-    background: lighten($color: #9DD458, $amount: 5%);
+  &:hover {
+    background: lighten($color: #9dd458, $amount: 5%);
     transition: background 0.2s ease;
   }
 
-  &:active{
-    background: darken($color: #9DD458, $amount: 10%);
-  }  
+  &:active {
+    background: darken($color: #9dd458, $amount: 10%);
+  }
 }
 
-.cart__empty{
+.cart__empty {
   text-align: center;
 
-  h2{
+  h2 {
     margin-top: 20px;
   }
 
-  p{
+  p {
     width: 280px;
     line-height: 24px;
-    color: #9D9D9D;
+    color: #9d9d9d;
   }
 
-  .button__green{
+  .button__green {
     width: 245px;
     margin-top: 20px;
 
-    &:hover{
-      img{
-        transform: rotate(180deg) translateX(5px); 
+    &:hover {
+      img {
+        transform: rotate(180deg) translateX(5px);
       }
     }
 
-    img{
+    img {
       transform: rotate(180deg);
       margin-right: 25px;
       transition: transform 0.2s ease;
@@ -266,20 +264,20 @@ header{
   }
 }
 
-.content__favorites{
+.content__favorites {
   gap: 20px;
 
-  .arrow__left{
+  .arrow__left {
     padding: 12px 15px;
     border: 1px solid rgb(242, 242, 242);
     border-radius: 8px;
-    transition: background-color .3s ease;
-    
-    &:hover{
+    transition: background-color 0.3s ease;
+
+    &:hover {
       background-color: rgb(239, 239, 239);
     }
 
-    &:active{
+    &:active {
       background-color: rgb(218, 218, 218);
     }
   }
