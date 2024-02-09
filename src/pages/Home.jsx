@@ -1,7 +1,6 @@
 import React from "react";
 
 import Card from "../components/Card";
-import AppContex from "../context";
 
 export default function Home({
   items,

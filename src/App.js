@@ -84,6 +84,8 @@ function App() {
     return cartItems.some((obj) => Number(obj.id) === Number(id));
   };
 
+  const cartItemsSum = cartItems.reduce((sum, obj) => obj.price + sum, 0);
+
   return (
     <AppContext.Provider
       value={{
@@ -94,6 +96,7 @@ function App() {
         onAddToFavorite,
         setCartOpened,
         setCartItems,
+        cartItemsSum,
       }}
     >
       <div className="wrapper clear">
