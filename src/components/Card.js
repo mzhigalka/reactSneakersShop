@@ -67,16 +67,18 @@ export default function Card({
               <span className="card__title-price text-uppercase">Цена:</span>
               <b>{price} руб.</b>
             </div>
-            <button>
-              <img
-                src={isItemAdded(id) ? "/img/done.svg" : "/img/plus.svg"}
-                alt="Plus"
-                className="button__plus"
-                width={32}
-                height={32}
-                onClick={onClickPlus}
-              />
-            </button>
+            {onPlus && (
+              <button>
+                <img
+                  src={isItemAdded(id) ? "/img/done.svg" : "/img/plus.svg"}
+                  alt="Plus"
+                  className="button__plus"
+                  width={32}
+                  height={32}
+                  onClick={onClickPlus}
+                />
+              </button>
+            )}
           </div>
         </>
       )}

@@ -3,9 +3,11 @@ import axios from "axios";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import AppContext from "./context";
+
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
-import AppContext from "./context";
+import Orders from "./pages/Orders";
 
 function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
@@ -84,8 +86,6 @@ function App() {
     return cartItems.some((obj) => Number(obj.id) === Number(id));
   };
 
-  const cartItemsSum = cartItems.reduce((sum, obj) => obj.price + sum, 0);
-
   return (
     <AppContext.Provider
       value={{
@@ -93,10 +93,10 @@ function App() {
         cartItems,
         favorites,
         isItemAdded,
+        onAddToCart,
         onAddToFavorite,
         setCartOpened,
         setCartItems,
-        cartItemsSum,
       }}
     >
       <div className="wrapper clear">
@@ -129,6 +129,7 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/favorites" exact={true} element={<Favorites />}></Route>
+          <Route path="/orders" exact={true} element={<Orders />}></Route>
         </Routes>
       </div>
     </AppContext.Provider>
