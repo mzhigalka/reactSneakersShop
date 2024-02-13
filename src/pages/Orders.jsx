@@ -37,7 +37,7 @@ export default function Orders() {
         </Link>
         <h1 className="content__title ">Мои покупки</h1>
       </div>
-      <div className="main-cards d-flex justify-between flex-wrap">
+      <div className="main-cards d-flex flex-wrap">
         {orders.map((item, index) => (
           <Card
             key={index}
