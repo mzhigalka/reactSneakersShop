@@ -2,8 +2,9 @@ import React from "react";
 import Card from "../components/Card";
 import { Link } from "react-router-dom";
 import AppContex from "../context";
+import Info from "../components/Info";
 
-export default function Favorites() {
+export default function Favorites({ items=[] }) {
   const { favorites, onAddToFavorite } = React.useContext(AppContex);
 
   return (

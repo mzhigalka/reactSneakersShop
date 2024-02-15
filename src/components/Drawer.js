@@ -2,14 +2,18 @@ import React from "react";
 import Info from "./Info";
 import axios from "axios";
 import { useCart } from "../hooks/useCart";
+import AppContext from "../context";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export default function Drawer({ onClose, items = [], onRemove }) {
-  const { cartItems, setCartItems, totalPrice, totalPriceWithProcent } = useCart();
+  const { cartItems, setCartItems, totalPrice, totalPriceWithProcent } =
+    useCart();
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(true);
   const [isOrderComplete, setIsOrderComplete] = React.useState(false);
   const [orderId, setOrderId] = React.useState(null);
+
+  const { setCartOpened } = React.useContext(AppContext);
 
   const onClickOrder = async () => {
     //fake axios request
@@ -125,6 +129,9 @@ export default function Drawer({ onClose, items = [], onRemove }) {
                 ? `Ваш заказ #${orderId} скоро будет передан курьерской доставке`
                 : "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."
             }
+            width={120}
+            height={120}
+            onClickButton={() => setCartOpened(false)}
           />
         )}
       </div>
