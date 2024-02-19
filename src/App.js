@@ -1,13 +1,18 @@
 import React from "react";
 import axios from "axios";
+
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import AppContext from "./context";
 
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import Orders from "./pages/Orders";
+
+import Swiper from "./Swiper";
 
 function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
@@ -139,7 +144,9 @@ function App() {
           />
         )}
         <Header onClickCart={() => setCartOpened(true)} />
-
+        
+        <Swiper/>
+        
         <Routes>
           <Route
             path="/"

@@ -286,3 +286,13 @@ header {
 .overlay-open {
   overflow: hidden;
 }
+
+.swiper{
+  z-index: 0;
+
+  .swiper__inner{
+    display: flex;
+    justify-content: center;
+    margin: 45px 60px 0;
+  }
+}
