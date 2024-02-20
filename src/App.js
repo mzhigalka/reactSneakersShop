@@ -4,14 +4,18 @@ import axios from "axios";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 
 import AppContext from "./context";
 
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import Orders from "./pages/Orders";
-
 import Swiper from "./Swiper";
 
 function App() {
@@ -122,6 +126,9 @@ function App() {
     return cartItems.some((obj) => Number(obj.parentId) === Number(id));
   };
 
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
   return (
     <AppContext.Provider
       value={{
@@ -144,9 +151,9 @@ function App() {
           />
         )}
         <Header onClickCart={() => setCartOpened(true)} />
-        
-        <Swiper/>
-        
+
+        {isHomePage && <Swiper />}
+
         <Routes>
           <Route
             path="/"
