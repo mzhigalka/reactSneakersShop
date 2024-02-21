@@ -293,9 +293,12 @@ header {
   .swiper__inner{
     display: flex;
     justify-content: center;
-    margin: 45px 60px 0;
+    margin: 45px 60px 40px;
   }
-}
-.swiper--hidden{
-  display: none;
+  .swiper-pagination{
+    
+    .swiper-pagination-bullet{
+      background-color:#777777;
+    }
+  }
 }
