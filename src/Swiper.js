@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 
 import "swiper/css";
-import 'swiper/css/pagination';
+import "swiper/css/pagination";
 
 export default () => {
   return (
@@ -14,6 +14,13 @@ export default () => {
     >
       <SwiperSlide>
         <div className="swiper__inner">
+          <div className="swiper__inner-content">
+            <h1>
+              <span>Stan Smith</span>,
+              <br /> Forever!
+            </h1>
+            <button>Купить</button>
+          </div>
           <img src="img/slider.svg" alt="Swiper" />
         </div>
       </SwiperSlide>

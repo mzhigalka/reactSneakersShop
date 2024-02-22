@@ -237,7 +237,7 @@ header {
   text-align: center;
 
   h2 {
-    margin: 10px 0 0 0 ;
+    margin: 10px 0 0 0;
   }
 
   p {
@@ -287,18 +287,42 @@ header {
   overflow: hidden;
 }
 
-.swiper{
+.swiper {
   z-index: 0;
 
-  .swiper__inner{
+  .swiper__inner {
+    position: relative;
     display: flex;
     justify-content: center;
     margin: 45px 60px 40px;
+
+    .swiper__inner-content {
+      position: absolute;
+      left: 61px;
+      top: 66px;
+
+      h1 {
+        font-size: 38px;
+
+        span {
+          color: #8bb43c;
+        }
+      }
+
+      button {
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 16px;
+        background-color: rgb(165, 211, 100);
+        border-radius: 110px;
+        padding: 14px 54px;
+        text-transform: uppercase;
+      }
+    }
   }
-  .swiper-pagination{
-    
-    .swiper-pagination-bullet{
-      background-color:#777777;
+  .swiper-pagination {
+    .swiper-pagination-bullet {
+      background-color: #777777;
     }
   }
 }
