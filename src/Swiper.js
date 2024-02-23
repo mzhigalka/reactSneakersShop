@@ -26,11 +26,25 @@ export default () => {
       </SwiperSlide>
       <SwiperSlide>
         <div className="swiper__inner">
+          <div className="swiper__inner-content">
+            <h1>
+              <span>Stan Smith</span>,
+              <br /> Forever!
+            </h1>
+            <button>Купить</button>
+          </div>
           <img src="img/slider.svg" alt="Swiper" />
         </div>
       </SwiperSlide>
       <SwiperSlide>
         <div className="swiper__inner">
+          <div className="swiper__inner-content">
+            <h1>
+              <span>Stan Smith</span>,
+              <br /> Forever!
+            </h1>
+            <button>Купить</button>
+          </div>
           <img src="img/slider.svg" alt="Swiper" />
         </div>
       </SwiperSlide>
