@@ -4,7 +4,7 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-export default () => {
+export default ({ scrollTo }) => {
   return (
     <Swiper
       pagination={true}
@@ -19,7 +19,7 @@ export default () => {
               <span>Stan Smith</span>,
               <br /> Forever!
             </h1>
-            <button>Купить</button>
+            <button onClick={scrollTo}>Купить</button>
           </div>
           <img src="img/slider.svg" alt="Swiper" />
         </div>

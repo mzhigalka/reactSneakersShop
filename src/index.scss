@@ -317,6 +317,16 @@ header {
         border-radius: 110px;
         padding: 14px 54px;
         text-transform: uppercase;
+        transition: background 0.2s ease;
+
+        &:hover {
+          background: lighten($color: #9dd458, $amount: 5%);
+          transition: background 0.2s ease;
+        }
+
+        &:active {
+          background: darken($color: #9dd458, $amount: 10%);
+        }
       }
     }
   }

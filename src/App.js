@@ -10,6 +10,14 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
+import {
+  animateScroll as scroll,
+  Link,
+  Button,
+  Element,
+  Events,
+  scrollSpy,
+} from "react-scroll";
 
 import AppContext from "./context";
 
@@ -128,6 +136,9 @@ function App() {
 
   const location = useLocation();
   const isHomePage = location.pathname === "/";
+  const scrollTo = () => {
+    scroll.scrollTo(570);
+  };
 
   return (
     <AppContext.Provider
@@ -152,7 +163,7 @@ function App() {
         )}
         <Header onClickCart={() => setCartOpened(true)} />
 
-        {isHomePage && <Swiper />}
+        {isHomePage && <Swiper scrollTo={scrollTo} />}
 
         <Routes>
           <Route
