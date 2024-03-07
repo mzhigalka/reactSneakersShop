@@ -10,14 +10,7 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
-import {
-  animateScroll as scroll,
-  Link,
-  Button,
-  Element,
-  Events,
-  scrollSpy,
-} from "react-scroll";
+import { animateScroll as scroll } from "react-scroll";
 
 import AppContext from "./context";
 
@@ -38,16 +31,18 @@ function App() {
     async function fetchData() {
       try {
         const cartResponse = await axios.get(
-          "https://65b0c894d16d31d11bdd3bd9.mockapi.io/cart"
+          "https://4327bf1899eefc96.mokky.dev/cart"
         );
-        // const favoritesResponse = await axios.get('https://65b0c894d16d31d11bdd3bd9.mockapi.io/favorites');
+        const favoritesResponse = await axios.get(
+          "https://4327bf1899eefc96.mokky.dev/favorites"
+        );
         const itemsResponse = await axios.get(
-          "https://65b0c894d16d31d11bdd3bd9.mockapi.io/items"
+          "https://4327bf1899eefc96.mokky.dev/items"
         );
 
         setIsLoading(false);
         setCartItems(cartResponse.data);
-        // setFavorites(favoritesResponse.data);
+        setFavorites(favoritesResponse.data);
         setItems(itemsResponse.data);
       } catch (error) {
         alert("Ошибка при запросе данных");
@@ -68,12 +63,12 @@ function App() {
           prev.filter((item) => Number(item.parentId) !== Number(obj.id))
         );
         await axios.delete(
-          `https://65b0c894d16d31d11bdd3bd9.mockapi.io/cart/${findItem.id}`
+          `https://4327bf1899eefc96.mokky.dev/cart/${findItem.id}`
         );
       } else {
         setCartItems((prev) => [...prev, obj]);
         const { data } = await axios.post(
-          "https://65b0c894d16d31d11bdd3bd9.mockapi.io/cart",
+          "https://4327bf1899eefc96.mokky.dev/cart",
           obj
         );
         setCartItems((prev) =>
@@ -95,7 +90,7 @@ function App() {
 
   const onRemoveToCart = (id) => {
     try {
-      axios.delete(`https://65b0c894d16d31d11bdd3bd9.mockapi.io/cart/${id}`);
+      axios.delete(`https://4327bf1899eefc96.mokky.dev/cart/${id}`);
       setCartItems((prev) =>
         prev.filter((item) => Number(item.id) !== Number(id))
       );
@@ -107,16 +102,13 @@ function App() {
   const onAddToFavorite = async (obj) => {
     try {
       if (favorites.find((favObj) => Number(favObj.id) === Number(obj.id))) {
-        axios.delete(
-          `https://65b0c894d16d31d11bdd3bd9.mockapi.io/favorites/${obj.id}`
-        );
+        axios.delete(`https://4327bf1899eefc96.mokky.dev/favorites/${obj.id}`);
         setFavorites((prev) =>
           prev.filter((item) => Number(item.id) !== Number(obj.id))
         );
       } else {
-        //Wrong Link
         const { data } = await axios.post(
-          "https://65b0c894d16d31d11bdd3bd9.mockapi.io/favorites",
+          "https://4327bf1899eefc96.mokky.dev/favorites",
           obj
         );
         setFavorites((prev) => [...prev, data]);

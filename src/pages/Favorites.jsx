@@ -13,7 +13,7 @@ export default function Favorites() {
   };
 
   return (
-    <div className="content p-40 d-flex">
+    <div className="content p-40 d-flex flex-column">
       {favorites.length > 0 ? (
         <>
           <div className="content__favorites d-flex align-center mb-40">

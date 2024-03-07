@@ -16,7 +16,6 @@ export default function Drawer({ onClose, items = [], onRemove }) {
   const { setCartOpened } = React.useContext(AppContext);
 
   const onClickOrder = async () => {
-    //fake axios request
     try {
       const { data } = await axios.post(
         "https://65b0c894d16d31d11bdd3bd9.mockapi.io/orders",
@@ -70,7 +69,10 @@ export default function Drawer({ onClose, items = [], onRemove }) {
         </h2>
 
         {items.length > 0 ? (
-          <div className="d-flex flex-column flex">
+          <div
+            className="d-flex flex-column flex"
+            style={{ overflow: "hidden" }}
+          >
             <div className="items">
               {items.map((obj) => (
                 <div
