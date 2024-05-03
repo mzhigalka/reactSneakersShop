@@ -43,6 +43,7 @@ export default ({ scrollTo }) => {
               <span>Stan Smith</span>,
               <br /> Forever!
             </h1>
+            
             <button>Купить</button>
           </div>
           <img src="img/slider.svg" alt="Swiper" />
